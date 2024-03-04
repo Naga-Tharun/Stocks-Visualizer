@@ -10,5 +10,7 @@ namespace Stocks_Visualizer.Server.Data
         {
         }
         public DbSet<Stock> Stocks { get; set; }
+        public DbSet<TimeSeriesData> TimeSeriesDatas { get; set; }
+
     }
 }
