@@ -2,3 +2,6 @@
 Stocks-Visualizer/.vs/
 Stocks-Visualizer/Stocks-Visualizer.Server/obj/
 Stocks-Visualizer/Stocks-Visualizer.Server/bin/
+Stocks-Visualizer/Stocks-Visualizer.Server/appsettings.json
+Stocks-Visualizer/Stocks-Visualizer.Server/appsettings.Development.json
+Stocks-Visualizer/stocks-visualizer.client/obj/
