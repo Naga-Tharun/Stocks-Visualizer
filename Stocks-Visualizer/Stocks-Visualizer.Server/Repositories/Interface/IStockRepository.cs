@@ -2,7 +2,7 @@
 
 namespace Stocks_Visualizer.Server.Repositories.Interface
 {
-    public interface IStockRepositorycs
+    public interface IStockRepository
     {
         Task<Stock> CreateAsync(Stock stock);
     }

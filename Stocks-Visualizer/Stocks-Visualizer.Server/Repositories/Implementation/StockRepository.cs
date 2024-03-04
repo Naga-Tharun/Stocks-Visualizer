@@ -4,7 +4,7 @@ using Stocks_Visualizer.Server.Repositories.Interface;
 
 namespace Stocks_Visualizer.Server.Repositories.Implementation
 {
-    public class StockRepository : IStockRepositorycs
+    public class StockRepository : IStockRepository
     {
         private readonly ApplicationDbContext dbContext;
         public StockRepository(ApplicationDbContext dbContext)
