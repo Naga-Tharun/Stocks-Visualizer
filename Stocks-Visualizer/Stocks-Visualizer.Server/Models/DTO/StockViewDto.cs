@@ -14,5 +14,9 @@
         public List<float> high { get; set; }
         public List<float> low { get; set; }
         public List<DateTime> openDate { get; set; }
+
+        public string Symbol { get; set; }
+        public string Interval { get; set; }
+        public string TimeZone { get; set; }
     }
 }

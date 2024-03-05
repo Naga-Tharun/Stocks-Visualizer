@@ -4,4 +4,7 @@ export interface StockView {
   high: Float32Array;
   low: Float32Array;
   openDate: Date[];
+  symbol: string;
+  interval: string;
+  timeZone: string;
 }

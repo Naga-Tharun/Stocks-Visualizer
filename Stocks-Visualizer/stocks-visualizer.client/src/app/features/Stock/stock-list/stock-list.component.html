@@ -12,6 +12,7 @@
                     <th>Id</th>
                     <th>Symbol</th>
                     <th>Interval</th>
+                    <th>Timezone</th>
                     <th></th>
                 </tr>
             </thead>
@@ -20,6 +21,7 @@
                     <td>{{stock.id}}</td>
                     <td>{{stock.symbol}}</td>
                     <td>{{stock.interval}}</td>
+                    <td>{{stock.timeZone}}</td>
                     <td>
                         <a [routerLink]="['/stocks/view', stock.id]" class="btn btn-light"> View </a>
                     </td>

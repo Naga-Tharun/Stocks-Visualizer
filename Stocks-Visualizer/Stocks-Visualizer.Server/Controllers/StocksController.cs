@@ -214,6 +214,10 @@ namespace Stocks_Visualizer.Server.Controllers
                 response.low.Add(timeSeries.Low);
                 response.openDate.Add(timeSeries.TimeStamp);
             }
+            response.Symbol = stock.Symbol;
+            response.Interval = stock.Interval;
+            response.TimeZone = stock.TimeZone;
+
             return Ok(response);
         }
     }
