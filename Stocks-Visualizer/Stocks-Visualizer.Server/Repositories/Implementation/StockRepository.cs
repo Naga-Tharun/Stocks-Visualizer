@@ -22,7 +22,12 @@ namespace Stocks_Visualizer.Server.Repositories.Implementation
 
         public async Task<IEnumerable<Stock>> GetAllAsync()
         {
-            return await dbContext.Stocks.ToListAsync();
+            return await dbContext.Stocks.Include(x=> x.TimeSeries).ToListAsync();
+        }
+
+        public Stock? GetAsync(Guid id)
+        {
+            return dbContext.Stocks.Include(x=>x.TimeSeries).FirstOrDefault(x=> x.Id == id);
         }
     }
 }

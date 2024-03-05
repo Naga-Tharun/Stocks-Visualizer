@@ -8,6 +8,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { AddStockComponent } from './features/Stock/add-stock/add-stock.component';
 import { StockListComponent } from './features/Stock/stock-list/stock-list.component';
 import { FormsModule } from '@angular/forms';
+import { StockViewComponent } from './features/Stock/stock-view/stock-view.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     AddStockComponent,
     StockListComponent,
     AddStockComponent,
-    StockListComponent
+    StockListComponent,
+    StockViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

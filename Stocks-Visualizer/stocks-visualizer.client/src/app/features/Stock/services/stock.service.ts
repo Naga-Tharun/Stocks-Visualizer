@@ -19,4 +19,8 @@ export class StockService {
   getAllStocks() : Observable<Stock[]> {
     return this.http.get<Stock[]>(`${environment.apiBaseUrl}/api/Stocks`);
   }
+
+  getStock(data: string): Observable<Stock> {
+    return this.http.get<Stock>(`${environment.apiBaseUrl}/api/Stocks/${data}`);
+  }
 }

@@ -7,5 +7,6 @@ namespace Stocks_Visualizer.Server.Repositories.Interface
         Task<Stock> CreateAsync(Stock stock);
 
         Task<IEnumerable<Stock>> GetAllAsync();
+        Stock? GetAsync(Guid id);
     }
 }

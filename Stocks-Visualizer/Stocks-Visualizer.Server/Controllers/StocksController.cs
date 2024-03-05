@@ -161,5 +161,22 @@ namespace Stocks_Visualizer.Server.Controllers
             return Ok(response);
         }
 
+        // Get: /api/stocks/{id}
+        [HttpGet]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> GetStock([FromRoute]Guid id)
+        {
+            var stock = stockRepository.GetAsync(id);
+            var response = new StockViewDto();
+            foreach(var timeSeries in stock.TimeSeries)
+            {
+                response.open.Add(timeSeries.Open);
+                response.close.Add(timeSeries.Close);
+                response.high.Add(timeSeries.High);
+                response.low.Add(timeSeries.Low);
+                response.openDate.Add(timeSeries.TimeStamp);
+            }
+            return Ok(response);
+        }
     }
 }
