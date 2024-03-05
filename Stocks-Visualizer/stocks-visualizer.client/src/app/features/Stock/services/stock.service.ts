@@ -4,6 +4,7 @@ import { AddStockRequest } from '../models/add-stock-request.model';
 import { Stock } from '../models/stock.model';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
+import { ViewStock } from '../models/view-stock.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class StockService {
     return this.http.get<Stock[]>(`${environment.apiBaseUrl}/api/Stocks`);
   }
 
-  getStock(data: string): Observable<Stock> {
+  getStock(data: string): Observable<ViewStock> {
     return this.http.get<Stock>(`${environment.apiBaseUrl}/api/Stocks/${data}`);
   }
 }
