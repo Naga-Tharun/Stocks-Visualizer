@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddStockComponent } from './features/Stock/add-stock/add-stock.component';
 import { StockListComponent } from './features/Stock/stock-list/stock-list.component';
+import { ViewStockComponent } from './features/Stock/view-stock/view-stock.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'stocks',
     component: StockListComponent
+  },
+  {
+    path: 'stocks/:id',
+    component: ViewStockComponent
   }
 ];
 
