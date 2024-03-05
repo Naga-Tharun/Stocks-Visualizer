@@ -212,7 +212,10 @@ namespace Stocks_Visualizer.Server.Controllers
         [Route("{id:guid}")]
         public async Task<IActionResult> GetStock([FromRoute]Guid id)
         {
-            var stock = stockRepository.GetAsync(id);
+            var stock = await stockRepository.GetAsync(id);
+            if (stock == null)
+                return NotFound("Stock not found.");
+
             var response = new StockViewDto();
             foreach(var timeSeries in stock.TimeSeries)
             {

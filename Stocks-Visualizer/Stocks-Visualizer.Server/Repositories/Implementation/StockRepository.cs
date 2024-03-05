@@ -25,9 +25,9 @@ namespace Stocks_Visualizer.Server.Repositories.Implementation
             return await dbContext.Stocks.Include(x=> x.TimeSeries).ToListAsync();
         }
 
-        public Stock? GetAsync(Guid id)
+        public async Task<Stock?> GetAsync(Guid id)
         {
-            return dbContext.Stocks.Include(x=>x.TimeSeries).FirstOrDefault(x=> x.Id == id);
+            return await dbContext.Stocks.Include(x=>x.TimeSeries).FirstOrDefaultAsync(x=> x.Id == id);
         }
     }
 }
