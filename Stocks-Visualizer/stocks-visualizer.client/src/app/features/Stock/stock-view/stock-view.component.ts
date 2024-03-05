@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StockService } from '../services/stock.service';
-import { ViewStock } from '../models/view-stock.model';
+import { StockView } from '../models/stock-view.model';
 
 @Component({
   selector: 'app-stock-view',
@@ -11,7 +11,7 @@ import { ViewStock } from '../models/view-stock.model';
 })
 export class StockViewComponent implements OnInit,OnDestroy {
   id: string | null = null;
-  stock?: ViewStock;
+  stock?: StockView;
   paramSubscription?: Subscription;
   constructor(private route: ActivatedRoute, private stockService: StockService) {
 

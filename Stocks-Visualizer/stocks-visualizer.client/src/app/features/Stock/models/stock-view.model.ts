@@ -3,5 +3,5 @@ export interface StockView {
   close: Float32Array;
   high: Float32Array;
   low: Float32Array;
-  openTime: Date[];
+  openDate: Date[];
 }
