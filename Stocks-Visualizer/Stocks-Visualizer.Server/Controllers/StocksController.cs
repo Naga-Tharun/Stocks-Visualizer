@@ -51,17 +51,6 @@ namespace Stocks_Visualizer.Server.Controllers
                 {
                     var ApiResponse = await httpClient.GetStringAsync(apiUrl);
 
-                    // Deserialize the JSON response from Alpha Vantage
-                    // var alphaVantageResponse = JsonConvert.DeserializeObject<AlphaVantageResponseDto>(response);
-
-                    // Now you have the data in alphaVantageResponse.TimeSeries
-                    // You can transform and store it in your database here
-                    // For example, you can use your DbContext to save the data
-
-                    //var avResponse = JsonConvert.DeserializeObject(response);
-                    
-                    //var timeSeries = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>((string)avResponse);
-
                     if (request.TimeFrame == "intraday")
                     {
                         // testing string

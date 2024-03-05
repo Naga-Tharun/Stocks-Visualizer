@@ -1,4 +1,4 @@
-export interface ViewStock {
+export interface StockView {
   open: Float32Array;
   close: Float32Array;
   high: Float32Array;
