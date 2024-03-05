@@ -27,7 +27,7 @@ export class AddStockComponent implements OnDestroy {
     this.addStockSubscription = this.stockService.addStock(this.model)
     .subscribe({
       next: (response) => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/stocks');
       },
     });
     console.log(this.model);

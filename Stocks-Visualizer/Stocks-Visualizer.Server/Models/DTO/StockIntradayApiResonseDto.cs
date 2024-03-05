@@ -3,7 +3,7 @@
 namespace Stocks_Visualizer.Server.Models.DTO
 {
 
-    public class MetaDataApiResponseDto
+    public class MetaDataIntradayApiResponseDto
     {
         [JsonProperty("1. Information")]
         public string Information { get; set; }
@@ -24,7 +24,7 @@ namespace Stocks_Visualizer.Server.Models.DTO
         public string TimeZone { get; set; }
     }
 
-    public class TimeSeriesDataApiResponseDto
+    public class TimeSeriesDataIntradayApiResponseDto
     {
         [JsonProperty("1. open")]
         public float Open { get; set; }
@@ -45,9 +45,9 @@ namespace Stocks_Visualizer.Server.Models.DTO
     public class StockIntradayApiResponseDto
     {
         [JsonProperty("Meta Data")]
-        public MetaDataApiResponseDto MetaData { get; set; }
+        public MetaDataIntradayApiResponseDto MetaData { get; set; }
 
         [JsonProperty("Time Series (5min)")]
-        public Dictionary<string, TimeSeriesDataApiResponseDto> TimeSeries { get; set; }
+        public Dictionary<string, TimeSeriesDataIntradayApiResponseDto> TimeSeries { get; set; }
     }
 }
