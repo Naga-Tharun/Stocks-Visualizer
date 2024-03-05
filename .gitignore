@@ -6,6 +6,5 @@ Stocks-Visualizer/Stocks-Visualizer.Server/appsettings.json
 Stocks-Visualizer/Stocks-Visualizer.Server/appsettings.Development.json
 Stocks-Visualizer/stocks-visualizer.client/obj/
 /Stocks-Visualizer/Stocks-Visualizer.Server/Migrations/
-/Stocks-Visualizer/Stocks-Visualizer.Server/appsettings.json
 /Stocks-Visualizer/Stocks-Visualizer.Server/Migrations/20240304102353_InitialMig.cs
 /Stocks-Visualizer/Stocks-Visualizer.Server/Migrations/20240304102353_InitialMig.Designer.cs
