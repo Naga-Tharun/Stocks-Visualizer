@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="mt-3"> Stock List </h1>
+
+    <div clas="d-flex justify-content-end mt-3">
+        <a [routerLink]="['/stocks/addstock']" class="btn btn-primary"> Add Stock </a>
+    </div>
+
+    <ng-container *ngIf="stocks$ | async as stocks">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Symbol</th>
+                    <th>Interval</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stock of stocks">
+                    <td>{{stock.id}}</td>
+                    <td>{{stock.symbol}}</td>
+                    <td>{{stock.interval}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </ng-container>
+    
+</div>

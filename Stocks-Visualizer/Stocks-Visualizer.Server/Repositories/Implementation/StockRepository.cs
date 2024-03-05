@@ -1,4 +1,5 @@
-﻿using Stocks_Visualizer.Server.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Stocks_Visualizer.Server.Data;
 using Stocks_Visualizer.Server.Models.Domain;
 using Stocks_Visualizer.Server.Repositories.Interface;
 
@@ -17,6 +18,11 @@ namespace Stocks_Visualizer.Server.Repositories.Implementation
             await dbContext.SaveChangesAsync();
 
             return stock;
+        }
+
+        public async Task<IEnumerable<Stock>> GetAllAsync()
+        {
+            return await dbContext.Stocks.ToListAsync();
         }
     }
 }

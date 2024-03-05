@@ -6,5 +6,7 @@ namespace Stocks_Visualizer.Server.Models.DTO
     {
         public string Symbol { get; set; }
         public string Interval { get; set; }
+
+        public string TimeFrame { get; set; }
     }
 }

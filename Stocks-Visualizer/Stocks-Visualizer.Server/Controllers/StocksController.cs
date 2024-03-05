@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Stocks_Visualizer.Server.Models.Domain;
 using Stocks_Visualizer.Server.Models.DTO;
 using Stocks_Visualizer.Server.Repositories.Interface;
 using System.Net.Http;
@@ -28,7 +29,22 @@ namespace Stocks_Visualizer.Server.Controllers
 
             try
             {
-                var apiUrl = $"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={request.Symbol}&interval={request.Interval}&apikey=2XUP1DI8XMATRETW";
+                var apiUrl = "";
+
+                if (request.TimeFrame == "intraday")
+                {
+                    if (request.Interval == null)
+                    {
+                        return BadRequest("Interval is required for intraday time frame");
+                    }
+
+                    apiUrl = $"https://www.alphavantage.co/query?function=TIME_SERIES_{request.TimeFrame}&symbol={request.Symbol}&interval={request.Interval}&apikey=2XUP1DI8XMATRETW";
+                }
+                else
+                {
+                    apiUrl = $"https://www.alphavantage.co/query?function=TIME_SERIES_{request.TimeFrame}&symbol={request.Symbol}&apikey=2XUP1DI8XMATRETW";
+                }
+
 
                 using (var httpClient = httpClientFactory.CreateClient())
                 {
@@ -50,5 +66,38 @@ namespace Stocks_Visualizer.Server.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+
+        // GET: /api/stocks
+        [HttpGet]
+        public async Task<IActionResult> GetAllStocks()
+        {
+            var stocks = await stockRepository.GetAllAsync();
+
+            // Map domain model to dto
+            var response = new List<StockDto>();
+            foreach (var stock in stocks)
+            {
+                response.Add(new StockDto
+                {
+                    Id = stock.Id,
+                    Symbol = stock.Symbol,
+                    Interval = stock.Interval,
+                    OutputSize = stock.OutputSize,
+                    TimeZone = stock.TimeZone,
+                    TimeSeries = stock.TimeSeries.Select(ts => new TimeSeriesDataDto
+                    {
+                        TimeStamp = ts.TimeStamp,
+                        Open = ts.Open,
+                        High = ts.High,
+                        Low = ts.Low,
+                        Close = ts.Close,
+                        Volume = ts.Volume
+                    }).ToList()
+                });
+            }
+
+            return Ok(response);
+        }
+
     }
 }
