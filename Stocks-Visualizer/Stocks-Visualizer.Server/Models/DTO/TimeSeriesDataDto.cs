@@ -12,6 +12,6 @@
 
         public float Close { get; set; }
 
-        public int Volume { get; set; }
+        public long Volume { get; set; }
     }
 }

@@ -73,8 +73,8 @@ namespace Stocks_Visualizer.Server.Migrations
                     b.Property<DateTime>("TimeStamp")
                         .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<int>("Volume")
-                        .HasColumnType("NUMBER(10)");
+                    b.Property<long>("Volume")
+                        .HasColumnType("NUMBER(19)");
 
                     b.HasKey("Id");
 

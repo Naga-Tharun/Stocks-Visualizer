@@ -37,7 +37,7 @@ namespace Stocks_Visualizer.Server.Models.DTO
         public float Close { get; set; }
 
         [JsonProperty("5. volume")]
-        public int Volume { get; set; }
+        public long Volume { get; set; }
     }
 
     public class StockApiResponseDto

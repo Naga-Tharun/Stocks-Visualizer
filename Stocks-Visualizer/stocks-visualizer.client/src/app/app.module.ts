@@ -9,6 +9,9 @@ import { AddStockComponent } from './features/Stock/add-stock/add-stock.componen
 import { StockListComponent } from './features/Stock/stock-list/stock-list.component';
 import { FormsModule } from '@angular/forms';
 import { StockViewComponent } from './features/Stock/stock-view/stock-view.component';
+import ChartsModule from 'chart.js/auto';
+import { CandlestickChartComponent } from './features/Stock/candlestick-chart/candlestick-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +21,12 @@ import { StockViewComponent } from './features/Stock/stock-view/stock-view.compo
     StockListComponent,
     AddStockComponent,
     StockListComponent,
-    StockViewComponent
+    StockViewComponent,
+    CandlestickChartComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule, FormsModule
+    AppRoutingModule, FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
