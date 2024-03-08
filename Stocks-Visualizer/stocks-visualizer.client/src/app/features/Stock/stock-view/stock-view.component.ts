@@ -69,7 +69,7 @@ export class StockViewComponent implements OnInit,OnDestroy {
                   data: combinedData
                 },
                 {
-                  name: '200-day Moving Average',
+                  name: 'Moving Average',
                   type: 'line',
                   data: modifiedMovingAverageData,
                 },],
