@@ -27,37 +27,58 @@ export class StockViewComponent implements OnInit,OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
-    this.paramSubscription = await this.route.paramMap.subscribe({
+    this.paramSubscription = this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');
         if (this.id) {
           this.stockService.getStock(this.id).subscribe({
             next: (response) => {
               this.stock = response;
-              console.log(this.stock);
-
+              // console.log(this.stock);
               const combinedData = this.stock?.openDate.map((date, index) => {
                 return {
                   x: new Date(date),
                   y: [this.stock?.open[index], this.stock?.high[index], this.stock?.low[index], this.stock?.close[index]]
                 };
               });
-          
-              // console.log(combinedData);
+
+              console.log(combinedData);
               // console.log(this.stock?.openDate);
+              // Assuming you have the stock data in the variable 'data'
+              const movingAverageData = calculateMovingAverage(combinedData, combinedData.length);
+
+              var modifiedMovingAverageData = movingAverageData.map((value, index) => {
+                return {
+                  x: combinedData[index].x,
+                  y: value
+                };
+              });
+
+              modifiedMovingAverageData = movingAverageData.map((value, index) => ({
+                x: combinedData[index].x,
+                y: value,
+              }))
+              .sort((a, b) => a.x.getTime() - b.x.getTime());
+
+              console.log(modifiedMovingAverageData);
 
               var options = {
                 series: [{
                   name: 'candle',
                   type: 'candlestick',
                   data: combinedData
-                }],
+                },
+                {
+                  name: '200-day Moving Average',
+                  type: 'line',
+                  data: modifiedMovingAverageData,
+                },],
                 chart: {
-                height: 350,
-                width: '70%',
-                maxWidth: 800,
-                type: 'candlestick',
-                align: 'center'
+                  height: 350,
+                  width: '70%',
+                  maxWidth: 800,
+                  type: 'candlestick',
+                  align: 'center'
                 },
                 title: {
                   text: 'CandleStick Chart',
@@ -85,13 +106,27 @@ export class StockViewComponent implements OnInit,OnDestroy {
                   },
                 ]
               };
-          
+
               var chart = new ApexCharts(document.querySelector("#chartholder"), options);
               chart.render();
             }
-          })
+          });
         }
       }
     });
   }
+}
+
+function calculateMovingAverage(data: {x: Date; y: (number | undefined)[];}[], period:number) {
+  const closeValues = data.map((dataPoint) => dataPoint.y[3] || 0);
+  const movingAverage: number[] = [];
+
+  for (let i = 0; i < closeValues.length; i++) {
+    const startIndex = Math.max(0, i - period + 1);
+    const valuesToAverage = closeValues.slice(startIndex, i + 1);
+    const average = valuesToAverage.reduce((sum, value) => sum + value, 0) / valuesToAverage.length;
+    movingAverage.push(average);
+  }
+  // console.log(movingAverage);
+  return movingAverage;
 }
