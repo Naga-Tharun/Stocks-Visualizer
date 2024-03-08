@@ -43,7 +43,7 @@ export class StockViewComponent implements OnInit,OnDestroy {
                 };
               });
           
-              console.log(combinedData);
+              // console.log(combinedData);
               // console.log(this.stock?.openDate);
 
               var options = {
@@ -54,45 +54,36 @@ export class StockViewComponent implements OnInit,OnDestroy {
                 }],
                 chart: {
                 height: 350,
-                type: 'line',
-              },
-              title: {
-                text: 'CandleStick Chart',
-                align: 'left'
-              },
-              stroke: {
-                width: [3, 1]
-              },
-              tooltip: {
-                shared: true,
-                custom: [function({seriesIndex, dataPointIndex, w}: { seriesIndex: number, dataPointIndex: number, w: any }) {
-                  return w.globals.series[seriesIndex][dataPointIndex]
-                }, function({ seriesIndex, dataPointIndex, w }: { seriesIndex: number, dataPointIndex: number, w: any }) : string {
-                  var o = w.globals.seriesCandleO[seriesIndex][dataPointIndex]
-                  var h = w.globals.seriesCandleH[seriesIndex][dataPointIndex]
-                  var l = w.globals.seriesCandleL[seriesIndex][dataPointIndex]
-                  var c = w.globals.seriesCandleC[seriesIndex][dataPointIndex]
-                  return (
-                    '<div class="apexcharts-tooltip-candlestick">' +
-                    '<div>Open: <span class="value">' +
-                    o +
-                    '</span></div>' +
-                    '<div>High: <span class="value">' +
-                    h +
-                    '</span></div>' +
-                    '<div>Low: <span class="value">' +
-                    l +
-                    '</span></div>' +
-                    '<div>Close: <span class="value">' +
-                    c +
-                    '</span></div>' +
-                    '</div>'
-                  )
-                }]
-              },
-              xaxis: {
-                type: 'datetime'
-              }
+                width: '70%',
+                maxWidth: 800,
+                type: 'candlestick',
+                align: 'center'
+                },
+                title: {
+                  text: 'CandleStick Chart',
+                  align: 'left'
+                },
+                stroke: {
+                  width: [3, 1]
+                },
+                xaxis: {
+                  type: 'datetime'
+                },
+                yaxis: {
+                  tooltip: {
+                    enabled: true
+                  },
+                },
+                responsive: [
+                  {
+                    breakpoint: 1000,
+                    options: {
+                      chart: {
+                        width: '80%',
+                      },
+                    },
+                  },
+                ]
               };
           
               var chart = new ApexCharts(document.querySelector("#chartholder"), options);
@@ -102,8 +93,5 @@ export class StockViewComponent implements OnInit,OnDestroy {
         }
       }
     });
-
-    
   }
-
 }

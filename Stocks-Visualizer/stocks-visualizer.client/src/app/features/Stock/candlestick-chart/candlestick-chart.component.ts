@@ -202,8 +202,10 @@ import ApexCharts from 'apexcharts'
   styleUrls: ['./candlestick-chart.component.css']
 })
 export class CandlestickChartComponent implements OnInit {
+
   ngOnInit() {
     var options = {
+      
       series: [{
       name: 'line',
       type: 'line',
